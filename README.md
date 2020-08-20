@@ -1,4 +1,4 @@
-[![pipeline status](https://gitlab.com/araffin/rl-baselines3-zoo/badges/master/pipeline.svg)](https://gitlab.com/araffin/rl-baselines3-zoo/-/commits/master) [![coverage report](https://gitlab.com/araffin/rl-baselines3-zoo/badges/master/coverage.svg)](https://gitlab.com/araffin/rl-baselines3-zoo/-/commits/master)
+[![pipeline status](https://gitlab.com/araffin/rl-baselines3-zoo/badges/master/pipeline.svg)](https://gitlab.com/araffin/rl-baselines3-zoo/-/commits/master) [![coverage report](https://gitlab.com/araffin/rl-baselines3-zoo/badges/master/coverage.svg)](https://gitlab.com/araffin/rl-baselines3-zoo/-/commits/master) [![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 
 
@@ -72,11 +72,16 @@ Save a checkpoint of the agent every 100000 steps:
 python train.py --algo td3 --env HalfCheetahBulletEnv-v0 --save-freq 100000
 ```
 
-
 Continue training (here, load pretrained agent for Breakout and continue training for 5000 steps):
 ```
 python train.py --algo a2c --env BreakoutNoFrameskip-v4 -i rl-trained-agents/a2c/BreakoutNoFrameskip-v4_1/BreakoutNoFrameskip-v4.zip -n 5000
 ```
+
+When using off-policy algorithms, you can also save the replay buffer after training:
+```
+python train.py --algo sac --env Pendulum-v0 --save-replay-buffer
+```
+It will be automatically loaded if present when continuing training.
 
 
 ## Hyperparameter Tuning
@@ -93,6 +98,10 @@ python train.py --algo ppo --env MountainCar-v0 -n 50000 -optimize --n-trials 10
   --sampler tpe --pruner median
 ```
 
+Distributed optimization using a shared database is also possible (see the corresponding [Optuna documentation](https://optuna.readthedocs.io/en/latest/tutorial/distributed.html)):
+```
+python train.py --algo ppo --env MountainCar-v0 -optimize --study-name test --storage sqlite:///example.db
+```
 
 ## Env Wrappers
 

@@ -1,13 +1,19 @@
+import os
+import sys
+
+#print(os.environ["KMP_DUPLICATE_LIB_OK"]=False)
+#print(os.environ)
+print(sys.path)
+from webots_env import MinesEnv
+
 import argparse
 import difflib
 import importlib
-import os
 import time
 import uuid
 import warnings
 from collections import OrderedDict
 from pprint import pprint
-from webots_env import MinesEnv
 
 import gym
 import numpy as np

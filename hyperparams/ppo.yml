@@ -1,6 +1,6 @@
 MinesEnv-v0:
   frame_stack: 4
-  n_envs: 16
+  n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'CnnPolicy'
   batch_size: 128

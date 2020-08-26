@@ -24,7 +24,7 @@ from stable_baselines3.common.sb2_compat.rmsprop_tf_like import RMSpropTFLike  #
 from stable_baselines3.common.utils import constant_fn, set_random_seed
 
 # from stable_baselines3.common.cmd_util import make_atari_env
-from stable_baselines3.common.vec_env import DummyVecEnv, VecFrameStack, VecNormalize, VecTransposeImage
+from stable_baselines3.common.vec_env import DummyVecEnv, VecFrameStack, VecNormalize, VecTransposeImage, SubprocVecEnv
 
 # For custom activation fn
 from torch import nn as nn  # noqa: F401 pytype: disable=unused-import
@@ -257,13 +257,13 @@ if __name__ == "__main__":  # noqa: C901
         log_dir = None if eval_env or no_log else save_path
 
         if n_envs == 1:
-            env = DummyVecEnv(
+            env = SubprocVecEnv(
                 [make_env(env_id, 0, args.seed, wrapper_class=env_wrapper, log_dir=log_dir, env_kwargs=env_kwargs)]
             )
         else:
             # env = SubprocVecEnv([make_env(env_id, i, args.seed) for i in range(n_envs)])
             # On most env, SubprocVecEnv does not help and is quite memory hungry
-            env = DummyVecEnv(
+            env = SubprocVecEnv(
                 [
                     make_env(env_id, i, args.seed, log_dir=log_dir, env_kwargs=env_kwargs, wrapper_class=env_wrapper)
                     for i in range(n_envs)

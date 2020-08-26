@@ -7,6 +7,7 @@ import uuid
 import warnings
 from collections import OrderedDict
 from pprint import pprint
+from webots_env import MinesEnv
 
 import gym
 import numpy as np

@@ -1,9 +1,13 @@
 import os
 import sys
 
-#print(os.environ["KMP_DUPLICATE_LIB_OK"]=False)
-#print(os.environ)
-print(sys.path)
+# Ok, for some reason, when this script is imported by stable baselines, the path is prepended
+# with the source directory of bitbots_quintic_walk, thus superseding the bitbots_quintic_walk
+# folder built in the workspace (containing the py_quintic_walk library). This next line fixes
+# the problem in a rather hacky way - it simply removes the directory from the path before the
+# package is imported. If you find a better way of dealing with this, feel free to improve it.
+sys.path = [x for x in sys.path if 'bitbots_motion/bitbots_quintic_walk/src' not in x]
+
 from webots_env import MinesEnv
 
 import argparse

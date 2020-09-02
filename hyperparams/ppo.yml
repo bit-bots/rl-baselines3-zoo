@@ -1,3 +1,19 @@
+ReachPositionEnv-v0:
+  n_envs: 1
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  batch_size: 128
+  n_steps: 512
+  gamma: 0.99
+  gae_lambda: 0.9
+  n_epochs: 20
+  ent_coef: 0.0
+  max_grad_norm: 0.5
+  vf_coef: 0.5
+  learning_rate: !!float 3e-5
+  clip_range: 0.4
+  policy_kwargs: "dict(log_std_init=-3)"
+
 MinesEnv-v0:
   n_envs: 1
   n_timesteps: !!float 1e6
@@ -12,6 +28,7 @@ MinesEnv-v0:
   vf_coef: 0.5
   learning_rate: !!float 3e-5
   clip_range: 0.4
+  policy_kwargs: "dict(log_std_init=-3)"
 
 DoorEnv-v0:
   n_envs: 1
@@ -27,6 +44,7 @@ DoorEnv-v0:
   vf_coef: 0.5
   learning_rate: !!float 3e-5
   clip_range: 0.4
+  policy_kwargs: "dict(log_std_init=-3)"
 
 
 atari:

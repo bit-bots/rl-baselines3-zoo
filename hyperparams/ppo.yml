@@ -10,9 +10,9 @@ ReachPositionEnv-v0:
   ent_coef: 0.0
   max_grad_norm: 0.5
   vf_coef: 0.5
-  learning_rate: !!float 3e-5
+  learning_rate: !!float 3e-4
   clip_range: 0.4
-  policy_kwargs: "dict(log_std_init=-2)"
+  policy_kwargs: "dict(log_std_init=-1)"
 
 MinesEnv-v0:
   n_envs: 1

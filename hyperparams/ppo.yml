@@ -1,4 +1,5 @@
 ReachPositionEnv-v0:
+  normalize: true
   n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'MlpPolicy'
@@ -15,6 +16,7 @@ ReachPositionEnv-v0:
   policy_kwargs: "dict(log_std_init=-1)"
 
 ReachPositionTellEnv-v0:
+  normalize: true
   n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'MlpPolicy'
@@ -31,6 +33,7 @@ ReachPositionTellEnv-v0:
   policy_kwargs: "dict(log_std_init=-1)"
 
 ReachObjectEnv-v0:
+  normalize: true
   n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'CnnPolicy'
@@ -47,7 +50,8 @@ ReachObjectEnv-v0:
   policy_kwargs: "dict(log_std_init=-2)"
 
 
-MinesEasyEnv-v0:
+MinesSimpleEnv-v0:  
+  normalize: true
   n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'CnnPolicy'
@@ -61,8 +65,8 @@ MinesEasyEnv-v0:
   vf_coef: 0.5
   learning_rate: !!float 3e-4
   clip_range: 0.4
-  policy_kwargs: "dict(log_std_init=-1)"
-
+  policy_kwargs: "dict(log_std_init=-2)"
+  callback: webots_env.TensorboardCallback
 
 MinesEnv-v0:
   n_envs: 1
@@ -81,6 +85,7 @@ MinesEnv-v0:
   policy_kwargs: "dict(log_std_init=-3)"
 
 DoorEnv-v0:
+  normalize: true
   n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'CnnPolicy'

@@ -6,6 +6,8 @@ import sys
 # folder built in the workspace (containing the py_quintic_walk library). This next line fixes
 # the problem in a rather hacky way - it simply removes the directory from the path before the
 # package is imported. If you find a better way of dealing with this, feel free to improve it.
+from stable_baselines3.common.env_checker import check_env
+
 sys.path = [x for x in sys.path if 'bitbots_motion/bitbots_quintic_walk/src' not in x]
 
 from webots_env import MinesEnv
@@ -422,7 +424,7 @@ if __name__ == "__main__":  # noqa: C901
             """
             Helper to create a model with different hyperparameters
             """
-            return ALGOS[args.algo](env=create_env(n_envs, no_log=True), tensorboard_log=tensorboard_log, verbose=0, **kwargs)
+            return ALGOS[args.algo](env=create_env(n_envs, no_log=True), verbose=0, **kwargs)
 
         data_frame = hyperparam_optimization(
             args.algo,

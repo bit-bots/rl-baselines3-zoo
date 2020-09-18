@@ -51,24 +51,44 @@ ReachObjectEnv-v0:
 
 
 MinesSimpleEnv-v0:  
-  normalize: true
-  n_envs: 16
+  n_envs: 1
   n_timesteps: !!float 1e7
   policy: 'CnnPolicy'
   batch_size: 256
-  n_steps: 8
-  gamma: 0.9
+  n_steps: 128
+  gamma: 0.99
   gae_lambda: 0.9
   n_epochs: 4
   ent_coef: 0.0
   max_grad_norm: 0.5
   vf_coef: 0.5
-  learning_rate: !!float 2.5e-4
+  learning_rate: 0.00025
   clip_range: 0.4
-  policy_kwargs: "dict(log_std_init=-2)"
+  policy_kwargs: "dict(net_arch=[dict(pi=[256, 256], vf=[256, 256])])"
   callback: webots_env.TensorboardCallback
 
+
+MinesPositionEnv-v0:
+  normalize: true
+  n_envs: 1
+  n_timesteps: !!float 1e7
+  policy: 'CnnPolicy'
+  batch_size: 128
+  n_steps: 1024
+  gamma: 0.99
+  gae_lambda: 0.95
+  n_epochs: 5
+  ent_coef: 0.0
+  max_grad_norm: 0.8
+  vf_coef: 0.5
+  learning_rate: !!float 5e-3
+  clip_range: 0.2
+  policy_kwargs: "dict(log_std_init=-2, net_arch=[dict(pi=[256, 256], vf=[256, 256])])"
+  callback: webots_env.TensorboardCallback
+
+
 MinesEnv-v0:
+  normalize: true
   n_envs: 1
   n_timesteps: !!float 1e6
   policy: 'CnnPolicy'

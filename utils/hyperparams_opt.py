@@ -167,7 +167,8 @@ def sample_ppo_params(trial):
     learning_rate = trial.suggest_loguniform("lr", 1e-5, 1)
     lr_schedule = "constant"
     # lr_schedule = trial.suggest_categorical('lr_schedule', ['linear', 'constant'])
-    ent_coef = trial.suggest_loguniform("ent_coef", 0.00000001, 0.1)
+    #ent_coef = trial.suggest_loguniform("ent_coef", 0.00000001, 0.1)
+    ent_coef = 0.0
     clip_range = trial.suggest_categorical("clip_range", [0.1, 0.2, 0.3, 0.4])
     n_epochs = trial.suggest_categorical("n_epochs", [1, 5, 10, 20])
     gae_lambda = trial.suggest_categorical("gae_lambda", [0.8, 0.9, 0.92, 0.95, 0.98, 0.99, 1.0])

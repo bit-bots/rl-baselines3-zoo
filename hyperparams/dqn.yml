@@ -1,15 +1,31 @@
 MinesSimpleEnv-v0:
   policy: 'CnnPolicy'
-  n_timesteps: !!float 1e7
+  n_timesteps: !!float 1e6
   buffer_size: 10000
-  learning_rate: !!float 1e-4
+  learning_rate: !!float 1e-3
   batch_size: 32
-  learning_starts: 0
+  learning_starts: 10000
   target_update_interval: 1000
   train_freq: 4
   gradient_steps: 1
   exploration_fraction: 0.1
   exploration_final_eps: 0.01
+  callback: webots_env.TensorboardCallback
+
+MinesEnv-v0:
+  policy: 'CnnPolicy'
+  n_timesteps: !!float 1e6
+  buffer_size: 10000
+  learning_rate: !!float 1e-4
+  batch_size: 32
+  learning_starts: 10000
+  target_update_interval: 1000
+  train_freq: 4
+  gradient_steps: 1
+  exploration_fraction: 0.1
+  exploration_final_eps: 0.01
+  callback: webots_env.TensorboardCallback
+
 
 atari:
   env_wrapper:

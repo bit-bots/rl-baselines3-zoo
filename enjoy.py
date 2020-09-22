@@ -11,6 +11,7 @@ from stable_baselines3.common.utils import set_random_seed
 from stable_baselines3.common.vec_env import DummyVecEnv, VecEnv, VecEnvWrapper
 from utils import ALGOS, create_test_env, get_latest_run_id, get_saved_hyperparams
 from utils.utils import StoreDict
+from webots_env import MinesEnv
 
 
 def main():  # noqa: C901

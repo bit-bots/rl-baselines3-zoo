@@ -89,11 +89,11 @@ MinesPositionEnv-v0:
 
 MinesEnv-v0:
   normalize: true
-  n_envs: 1
+  n_envs: 24
   n_timesteps: !!float 1e6
   policy: 'CnnPolicy'
   batch_size: 128
-  n_steps: 512
+  n_steps: 32
   gamma: 0.99
   gae_lambda: 0.9
   n_epochs: 20
@@ -102,7 +102,7 @@ MinesEnv-v0:
   vf_coef: 0.5
   learning_rate: !!float 3e-4
   clip_range: 0.4
-  policy_kwargs: "dict(log_std_init=-3)"
+  policy_kwargs: "dict(log_std_init=-3, net_arch=[dict(pi=[256, 256], vf=[256, 256])])"
 
 DoorEnv-v0:
   normalize: true
